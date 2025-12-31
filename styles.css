@@ -83,6 +83,39 @@ nav {
     color: #1a3d26;
 }
 
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+}
+
+.hamburger span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background: #2d5a3d;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
 /* Hero Section */
 .hero-section {
     margin-top: 70px;
@@ -550,8 +583,46 @@ footer p {
 
 /* Responsive */
 @media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
     .nav-links {
-        display: none;
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 70%;
+        max-width: 300px;
+        background: #fdfbf7;
+        flex-direction: column;
+        padding: 2rem 0;
+        box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+        transition: right 0.3s ease;
+        height: calc(100vh - 70px);
+        gap: 0;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links li {
+        width: 100%;
+        border-bottom: 1px solid #e8f5ed;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 1.2rem 2rem;
+        width: 100%;
+    }
+
+    .nav-links a:hover {
+        background: #e8f5ed;
+    }
+
+    .hero-section {
+        background-position: bottom left;
     }
 
     .carousel-item.center {
@@ -586,5 +657,19 @@ footer p {
 
     .hero-subtitle {
         font-size: 1.1rem;
+    }
+
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .testimonial-grid .testimonial-card {
+        grid-column: span 1;
+    }
+
+    .testimonial-grid .testimonial-card:nth-child(4),
+    .testimonial-grid .testimonial-card:nth-child(5) {
+        grid-column: 1;
     }
 }

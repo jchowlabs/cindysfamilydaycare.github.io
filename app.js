@@ -86,6 +86,35 @@ nextBtn.addEventListener('click', function() {
 
 initCarousel();
 
+// Hamburger Menu Toggle
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const navLinks = document.querySelector('.nav-links');
+
+hamburgerBtn.addEventListener('click', function() {
+    hamburgerBtn.classList.toggle('active');
+    navLinks.classList.toggle('active');
+});
+
+// Close mobile menu when clicking on a link
+const navLinkItems = document.querySelectorAll('.nav-links a');
+navLinkItems.forEach(link => {
+    link.addEventListener('click', function() {
+        hamburgerBtn.classList.remove('active');
+        navLinks.classList.remove('active');
+    });
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(event) {
+    const isClickInsideNav = navLinks.contains(event.target);
+    const isClickOnHamburger = hamburgerBtn.contains(event.target);
+    
+    if (!isClickInsideNav && !isClickOnHamburger && navLinks.classList.contains('active')) {
+        hamburgerBtn.classList.remove('active');
+        navLinks.classList.remove('active');
+    }
+});
+
 window.addEventListener('load', function() {
     window.scrollTo(0, 0);
 });
