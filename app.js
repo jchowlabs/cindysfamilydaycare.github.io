@@ -6,7 +6,8 @@ const images = [
     'static/5.jpeg',
     'static/6.jpeg',
     'static/7.jpeg',
-    'static/8.jpeg'
+    'static/8.jpeg',
+    'static/9.jpeg'
 ];
 
 let currentIndex = 1;
